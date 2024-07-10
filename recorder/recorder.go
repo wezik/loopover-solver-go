@@ -5,18 +5,14 @@ import (
 	"math"
 )
 
-type Recorder struct {
-	Moves []string
-}
-
-var r Recorder = Recorder{Moves: []string{}}
+var moves []string = []string{}
 var lastMove string = ""
 var consecutiveMoves int = 0
 
 func record(move string) {
         if lastMove != move {
                 if (lastMove != "") {
-                        r.Moves = append(r.Moves, fmt.Sprint(consecutiveMoves) + lastMove)
+                        moves = append(moves, fmt.Sprint(consecutiveMoves) + lastMove)
                 }
                 lastMove = move
                 consecutiveMoves = 0
@@ -27,16 +23,16 @@ func record(move string) {
 }
 
 func ResetRecorder() {
-        r.Moves = []string{}
+        moves = []string{}
         lastMove = ""
         consecutiveMoves = 0
 }
 
 func FinishRecording() []string {
         if (lastMove != "") {
-                r.Moves = append(r.Moves, fmt.Sprint(consecutiveMoves) + lastMove)
+                moves = append(moves, fmt.Sprint(consecutiveMoves) + lastMove)
         }
-        result := r.Moves
+        result := moves
         ResetRecorder()
         return result
 }
