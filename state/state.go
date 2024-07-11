@@ -2,6 +2,7 @@ package state
 
 import (
 	"fmt"
+	"loopover-solver/recorder"
 	"loopover-solver/utils"
 )
 
@@ -41,6 +42,7 @@ func (s *State) MoveHorizontal(row int, distance int) {
 	for i, cell := range s.Board[row] {
 		newRow[utils.Wrap(rowLength, i + distance)] = cell
 	}
+	recorder.RecordHorizontal(row, distance)
 	s.Board[row] = newRow
 }
 
@@ -61,6 +63,7 @@ func (s *State) MoveVertical(column int, distance int) {
 			}
 		}
 	}
+	recorder.RecordVertical(column, distance)
 	s.Board = newBoard
 }
 
