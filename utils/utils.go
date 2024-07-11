@@ -32,4 +32,3 @@ func CreateSolvedBoard(board [][]int) [][]int {
 	}
 	return result
 }
-

@@ -12,8 +12,8 @@ type State struct {
 }
 
 func New(initialBoard [][]int) *State {
-	return &State {
-		Board: initialBoard,
+	return &State{
+		Board:       initialBoard,
 		SolvedState: utils.CreateSolvedBoard(initialBoard),
 	}
 }
@@ -40,7 +40,7 @@ func (s *State) MoveHorizontal(row int, distance int) {
 	rowLength := len(s.Board[row])
 	newRow := make([]int, rowLength)
 	for i, cell := range s.Board[row] {
-		newRow[utils.Wrap(rowLength, i + distance)] = cell
+		newRow[utils.Wrap(rowLength, i+distance)] = cell
 	}
 	recorder.RecordHorizontal(row, distance)
 	s.Board[row] = newRow
@@ -57,7 +57,7 @@ func (s *State) MoveVertical(column int, distance int) {
 	for i, row := range s.Board {
 		for j, cell := range row {
 			if j == column {
-				newBoard[utils.Wrap(columnLength, i + distance)][j] = cell
+				newBoard[utils.Wrap(columnLength, i+distance)][j] = cell
 			} else {
 				newBoard[i][j] = cell
 			}
@@ -77,4 +77,3 @@ func (s *State) FindCell(value int) (int, int) {
 	}
 	return -1, -1
 }
-

@@ -36,15 +36,14 @@ func TestWrap(t *testing.T) {
 }
 
 func TestCreateSolvedBoard(t *testing.T) {
-        testBoard := [][]int{{12, 10, 11, 17}, {9, 13, 15, 18}, {16, 14, 19, 20}}
-        want := [][]int{{9, 10, 11, 12}, {13, 14, 15, 16}, {17, 18, 19, 20}}
-        got := CreateSolvedBoard(testBoard)
-        for i, row := range want {
-                for j, cell := range row {
-                        if got[i][j] != cell {
-                                t.Errorf("got %v want %v", got, want)
-                        }
-                }
-        }
+	testBoard := [][]int{{12, 10, 11, 17}, {9, 13, 15, 18}, {16, 14, 19, 20}}
+	want := [][]int{{9, 10, 11, 12}, {13, 14, 15, 16}, {17, 18, 19, 20}}
+	got := CreateSolvedBoard(testBoard)
+	for i, row := range want {
+		for j, cell := range row {
+			if got[i][j] != cell {
+				t.Errorf("got %v want %v", got, want)
+			}
+		}
+	}
 }
-

@@ -12,4 +12,3 @@ func Solve(initialBoard [][]int) any {
 	algorithm.Apply(state)
 	return recorder.FinishRecording()
 }
-
