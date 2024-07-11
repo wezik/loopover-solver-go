@@ -8,7 +8,7 @@ import (
 
 func Solve(initialBoard [][]int) any {
 	state := state.New(initialBoard)
-	algorithm := algorithms.RowSolve{}
-	algorithm.Apply(state)
+	algorithms.RowSolve{}.Apply(state)
+	algorithms.LastColSolve{}.Apply(state)
 	return recorder.FinishRecording()
 }
