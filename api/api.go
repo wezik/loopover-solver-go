@@ -3,6 +3,8 @@ package api
 import (
 	"fmt"
 	"loopover-solver/solver"
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +18,11 @@ func bindEndpoints(r *gin.Engine) {
 }
 
 func StartServer() {
+        ginMode := os.Getenv("GIN_MODE")
+        if ginMode == "release" {
+                gin.SetMode(gin.ReleaseMode)
+        }
+
         r := gin.Default()
         bindEndpoints(r)
 
