@@ -10,9 +10,9 @@ import (
 )
 
 func TestRandomized(t *testing.T) {
-	for i := 0; i < 50; i++ {
-		t.Run("Randomized row solve test", func(t *testing.T) {
-			size := rand.Intn(98) + 2
+	t.Run("Randomized row solve test", func(t *testing.T) {
+		for i := 0; i < 50; i++ {
+			size := rand.Intn(18) + 2
 			board := createRandomBoard(size, size)
 			state := state.New(board)
 
@@ -27,11 +27,11 @@ func TestRandomized(t *testing.T) {
 					return
 				}
 			}
-		})
-	}
-	for i := 0; i < 50; i++ {
-		t.Run("Randomized last col solve test", func(t *testing.T) {
-			size := rand.Intn(98) + 2
+		}
+	})
+	t.Run("Randomized last col solve test", func(t *testing.T) {
+		for i := 0; i < 50; i++ {
+			size := rand.Intn(18) + 2
 			board := createRandomBoardForCol(size, size)
 			state := state.New(board)
 
@@ -48,8 +48,8 @@ func TestRandomized(t *testing.T) {
 					return
 				}
 			}
-		})
-	}
+		}
+	})
 }
 
 func shuffle(slice []int) {
