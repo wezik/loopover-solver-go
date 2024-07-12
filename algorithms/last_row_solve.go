@@ -29,9 +29,9 @@ func (l LastRowSolve) Apply(state *state.State) {
 			state.MoveHorizontal(lastY, -cacheHorizontal)
 			state.MoveVertical(lastX, -1)
 		} else if currentY != lastY {
-			state.MoveVertical(lastX, -1)
-			state.MoveHorizontal(lastY, lastX-currentX)
 			state.MoveVertical(lastX, 1)
+			state.MoveHorizontal(lastY, lastX-1-currentX)
+			state.MoveVertical(lastX, -1)
 			continue
 		}
 		state.MoveHorizontal(lastY, lastX-1-currentX)

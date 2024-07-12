@@ -31,6 +31,7 @@ func TestLastRowSolve(t *testing.T) {
 				}
 				if got[i][j] != cell {
 					t.Errorf("got %v want %v", got, want)
+					break
 				}
 			}
 		}
@@ -53,6 +54,7 @@ func TestLastRowSolve(t *testing.T) {
 			for j, cell := range row {
 				if got[i][j] != cell {
 					t.Errorf("got %v want %v", got, want)
+					break
 				}
 			}
 		}
@@ -61,7 +63,7 @@ func TestLastRowSolve(t *testing.T) {
 		board := [][]int{
 			{1, 2, 3},
 			{4, 5, 6},
-			{9, 7, 8},
+			{8, 9, 7},
 		}
 		state := state.New(board)
 		want := [][]int{
@@ -77,6 +79,36 @@ func TestLastRowSolve(t *testing.T) {
 			for j, cell := range row {
 				if got[i][j] != cell {
 					t.Errorf("got %v want %v", got, want)
+					break
+				}
+			}
+		}
+	})
+	t.Run("Cell in last column and not last row", func(t *testing.T) {
+		board := [][]int{
+			{1, 2, 3, 4, 5},
+			{6, 7, 8, 9, 10},
+			{11, 12, 13, 14, 15},
+			{16, 17, 18, 19, 24},
+			{20, 21, 22, 23, 25},
+		}
+		state := state.New(board)
+		want := [][]int{
+			{1, 2, 3, 4, 5},
+			{6, 7, 8, 9, 10},
+			{11, 12, 13, 14, 15},
+			{16, 17, 18, 19, 20},
+			{21, 22, 23, 24, 25},
+		}
+
+		LastRowSolve{}.Apply(state)
+		got := state.Board
+
+		for i, row := range want {
+			for j, cell := range row {
+				if got[i][j] != cell {
+					t.Errorf("got %v want %v", got, want)
+					break
 				}
 			}
 		}
