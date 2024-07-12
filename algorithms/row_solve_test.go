@@ -5,15 +5,6 @@ import (
 	"testing"
 )
 
-func compareRows(got, want []int) bool {
-	for i, v := range want {
-		if v != got[i] {
-			return false
-		}
-	}
-	return true
-}
-
 func TestRowSolve(t *testing.T) {
 	t.Run("Starting same and first of row cell", func(t *testing.T) {
 		board := [][]int{
