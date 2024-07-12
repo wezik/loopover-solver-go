@@ -6,12 +6,12 @@ import (
 
 type RowSolve struct{}
 
-// Solve all cells except for the last row and column
 /*
-[ x ][ x ][ x ][   ]
-[ x ][ x ][ x ][   ]
-[ x ][ x ][ x ][   ]
-[   ][   ][   ][   ]
+[*][*][*][ ]
+[*][*][*][ ]
+[*][*][*][ ]
+[ ][ ][ ][ ]
+* - Solved in this step
 */
 
 func (s RowSolve) Apply(state *state.State) {

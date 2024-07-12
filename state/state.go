@@ -68,10 +68,10 @@ func (s *State) MoveVertical(column int, distance int) {
 }
 
 func (s *State) FindCell(value int) (int, int) {
-	for i, row := range s.Board {
-		for j, cell := range row {
+	for y, row := range s.Board {
+		for x, cell := range row {
 			if cell == value {
-				return i, j
+				return y, x
 			}
 		}
 	}

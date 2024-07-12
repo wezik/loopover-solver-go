@@ -6,6 +6,14 @@ import (
 
 type LastColSolve struct{}
 
+/*
+[X][X][X][*]
+[X][X][X][*]
+[X][X][X][*]
+[ ][ ][ ][ ]
+* - Solved in this step
+*/
+
 func (s LastColSolve) Apply(state *state.State) {
 	for destY := 0; destY < len(state.Board)-1; destY++ {
 		lastX := len(state.Board[destY]) - 1
