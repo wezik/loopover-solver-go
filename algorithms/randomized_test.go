@@ -18,7 +18,7 @@ func TestRandomized(t *testing.T) {
 
 			want := state.SolvedState[0 : size-1]
 
-			RowSolve{}.Apply(state)
+			MainRowSolve{}.Apply(state)
 			got := state.Board[0 : size-1]
 
 			for i, row := range got {
