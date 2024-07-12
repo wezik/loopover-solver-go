@@ -32,9 +32,7 @@ func FinishRecording() []string {
 	if lastMove != "" {
 		moves = append(moves, fmt.Sprint(consecutiveMoves)+lastMove)
 	}
-	result := moves
-	ResetRecorder()
-	return result
+	return moves
 }
 
 func RecordHorizontal(row, distance int) {

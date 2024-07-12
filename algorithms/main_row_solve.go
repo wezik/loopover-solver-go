@@ -4,7 +4,7 @@ import (
 	"loopover-solver/state"
 )
 
-type RowSolve struct{}
+type MainRowSolve struct{}
 
 /*
 [*][*][*][ ]
@@ -14,7 +14,7 @@ type RowSolve struct{}
 * - Solved in this step
 */
 
-func (s RowSolve) Apply(state *state.State) {
+func (s MainRowSolve) Apply(state *state.State) {
 	for y := 0; y < len(state.Board)-1; y++ {
 		solveSingleRow(state, y)
 	}

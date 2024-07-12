@@ -170,7 +170,7 @@ func TestRowSolve(t *testing.T) {
 		state := state.New(board)
 		want := [][]int{{1, 2, 3, 4}, {6, 7, 8, 9}, {11, 12, 13, 14}, {16, 17, 18, 19}}
 
-		RowSolve{}.Apply(state)
+		MainRowSolve{}.Apply(state)
 		got := state.Board[0:4]
 
 		for i, row := range got[0:4] {
