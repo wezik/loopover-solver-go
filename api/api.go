@@ -9,12 +9,13 @@ import (
 )
 
 type Form struct {
-	State [][]int `json:"state" binding:"required"`
+	Board [][]int `json:"board" binding:"required"`
 }
 
 func bindEndpoints(r *gin.Engine) {
+	r.Use(corsMiddleware())
 	r.GET("v1/api/ping", ping)
-	r.GET("v1/api/solve", getMoves)
+	r.POST("v1/api/solve", getMoves)
 }
 
 func StartServer() {
@@ -25,6 +26,8 @@ func StartServer() {
 
 	r := gin.Default()
 	bindEndpoints(r)
+	
+	
 
 	err := r.Run()
 	if err != nil {
@@ -41,5 +44,22 @@ func getMoves(c *gin.Context) {
 	if err := c.ShouldBindJSON(&obj); err != nil {
 		fmt.Println(err)
 	}
-	c.JSON(200, gin.H{"moves": solver.Solve(obj.State)})
+	c.JSON(200, gin.H{"moves": solver.Solve(obj.Board)})
+	c.Header("Access-Control-Allow-Origin", "*")
+}
+
+func corsMiddleware() gin.HandlerFunc {
+    return func(c *gin.Context) {
+        c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+        c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+        c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+        c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+        if c.Request.Method == "OPTIONS" {
+            c.AbortWithStatus(204)
+            return
+        }
+
+        c.Next()
+    }
 }
