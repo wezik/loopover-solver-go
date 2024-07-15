@@ -57,3 +57,6 @@ Moving then 2 times, row of index 3, to the right, should look like this:
 | **2** | 11 | 12 | 13 | 14 | 15 | | 11 | 12 | 13 | 14 | 15 |
 | **3** | **16** | **17** | **18** | **19** | **20** |→| **19** | **20** | **16** | **17** | **18** |
 | **4** | 21 | 22 | 23 | 24 | 25 | | 21 | 22 | 23 | 24 | 25 |
+
+## Configurating
+This part is still work in progress as I haven't made it past local enviornment with this project yet
